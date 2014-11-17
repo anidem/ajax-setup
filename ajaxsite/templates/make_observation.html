@@ -1,0 +1,39 @@
+<!-- make_observation.html -->
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content_row %}
+<div class="row">
+    <div class="col-md-6">
+        <legend>New Observation</legend>        
+        <form id="observation_form" action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <p><input id="observation_submit_btn" type="submit" class="btn btn-default" value="Add"/></p>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <legend>Observations</legend>        
+        {% for i in observation_list  %}
+            <div>{{ i.text }}</div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-md-6">
+        <legend>New Comment (using ajax)</legend>
+        <form id="ajaxform" action="" method="post">{% csrf_token %}
+            {{ commentform.as_p }}
+            <p><input id="ajax_submit_btn" type="submit" class="btn btn-default" value="Ajax Button"/></p>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <legend>Comments</legend>
+        <div id="comments">      
+        {% for i in comment_list  %}
+            <div class="message"> {{ i.subject }}: {{ i.text }}</div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content_row %}

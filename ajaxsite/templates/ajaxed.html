@@ -1,0 +1,18 @@
+<!-- ajaxed.html  -->
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content_row %}
+
+    <div class="col-md-6">
+        <h1>Ajax Testing</h1>
+        <form id="ajaxform" action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <p><input id="ajax_submit_btn" type="submit" class="btn btn-default" value="Ajax Button"/></p>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <legend>Comments</legend>
+        <div id="comments"></div>
+    </div>
+{% endblock content_row %}
